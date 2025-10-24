@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analog Clock & Timer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="clock">
+  <div class="number" style="--rotation: 30deg;">1</div>
+  <div class="number" style="--rotation: 60deg;">2</div>
+  <div class="number" style="--rotation: 90deg;">3</div>
+  <div class="number" style="--rotation: 120deg;">4</div>
+  <div class="number" style="--rotation: 150deg;">5</div>
+  <div class="number" style="--rotation: 180deg;">6</div>
+  <div class="number" style="--rotation: 210deg;">7</div>
+  <div class="number" style="--rotation: 240deg;">8</div>
+  <div class="number" style="--rotation: 270deg;">9</div>
+  <div class="number" style="--rotation: 300deg;">10</div>
+  <div class="number" style="--rotation: 330deg;">11</div>
+  <div class="number" style="--rotation: 360deg;">12</div>
+  <div class="hand hour" data-hour-hand></div>
+  <div class="hand minute" data-minute-hand></div>
+  <div class="hand second" data-second-hand></div>
+  <div class="timer-display" id="timer-display"></div>
+</div>
+
+<div class="timer-controls">
+  <button class="timer-btn" data-time="5">5min</button>
+  <button class="timer-btn" data-time="10">10min</button>
+  <button class="timer-btn" data-time="30">30min</button>
+  <button class="timer-btn" data-time="45">45min</button>
+  <button class="timer-btn" data-time="60">60min</button>
+  <button class="timer-btn" data-time="90">90min</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
