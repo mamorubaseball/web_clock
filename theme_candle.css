@@ -1,0 +1,98 @@
+body.theme-candle {
+    background-color: #1a0f0a;
+    font-family: 'Inter', sans-serif;
+    color: #eaddcf;
+}
+
+body.theme-candle #canvas-container {
+    background: radial-gradient(circle at center, transparent 0%, #000000 130%);
+}
+
+body.theme-candle .timer-display {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: -100px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+    pointer-events: none;
+    mix-blend-mode: screen;
+}
+
+body.theme-candle .timer-main-text {
+    font-family: 'Cormorant Garamond', serif;
+    color: #ffdcb4;
+}
+
+body.theme-candle .time-value {
+    font-size: 100px;
+    font-weight: 400;
+    letter-spacing: -2px;
+    line-height: 1;
+}
+
+body.theme-candle .time-unit {
+    font-size: 30px;
+    font-weight: 300;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+body.theme-candle .sub-text {
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-top: 10px;
+    color: #dcbfa0;
+}
+
+body.theme-candle .controls {
+    position: absolute;
+    /* Generated dynamically, ensure fixed to bottom */
+    bottom: 40px;
+    /* Lowered further per request */
+    gap: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    z-index: 1000;
+    /* High z-index to ensure clickability over canvas */
+    pointer-events: auto;
+}
+
+body.theme-candle .btn {
+    background: rgba(40, 30, 20, 0.4);
+    border: 1px solid rgba(255, 200, 150, 0.2);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #dcbfa0;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: all 0.4s ease;
+
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: none;
+}
+
+body.theme-candle .btn:hover {
+    background: rgba(255, 100, 50, 0.1);
+    border-color: rgba(255, 150, 100, 0.5);
+    box-shadow: 0 0 20px rgba(255, 100, 50, 0.2);
+    transform: translateY(-2px);
+    color: #fff;
+}
+
+body.theme-candle .btn.active {
+    background: rgba(255, 140, 60, 0.2);
+    border-color: rgba(255, 180, 100, 0.8);
+    box-shadow: 0 0 30px rgba(255, 120, 0, 0.3);
+    color: #fff;
+    transform: scale(1.1);
+}

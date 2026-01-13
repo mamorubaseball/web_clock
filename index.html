@@ -1,45 +1,51 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Analog Clock & Timer</title>
+  <title>Focus Timer</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Google AdSense サイト承認コード -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4427531445515900"
-     crossorigin="anonymous"></script>
-  <!-- その他のメタタグやスタイルシートなど -->
+  <!-- Fonts for both themes -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400&family=Outfit:wght@200;400;600&display=swap"
+    rel="stylesheet">
+
+  <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
 </head>
+
 <body>
+  <button id="theme-switch">Switch Theme</button>
 
-<div class="clock">
-  <div class="number" style="--rotation: 30deg;">1</div>
-  <div class="number" style="--rotation: 60deg;">2</div>
-  <div class="number" style="--rotation: 90deg;">3</div>
-  <div class="number" style="--rotation: 120deg;">4</div>
-  <div class="number" style="--rotation: 150deg;">5</div>
-  <div class="number" style="--rotation: 180deg;">6</div>
-  <div class="number" style="--rotation: 210deg;">7</div>
-  <div class="number" style="--rotation: 240deg;">8</div>
-  <div class="number" style="--rotation: 270deg;">9</div>
-  <div class="number" style="--rotation: 300deg;">10</div>
-  <div class="number" style="--rotation: 330deg;">11</div>
-  <div class="number" style="--rotation: 360deg;">12</div>
-  <div class="hand hour" data-hour-hand></div>
-  <div class="hand minute" data-minute-hand></div>
-  <div class="hand second" data-second-hand></div>
-  <div class="timer-display" id="timer-display"></div>
-</div>
+  <div id="canvas-container"></div>
 
-<div class="timer-controls">
-  <button class="timer-btn" data-time="5">5min</button>
-  <button class="timer-btn" data-time="10">10min</button>
-  <button class="timer-btn" data-time="30">30min</button>
-  <button class="timer-btn" data-time="45">45min</button>
-  <button class="timer-btn" data-time="60">60min</button>
-  <button class="timer-btn" data-time="90">90min</button>
-</div>
+  <div id="ui-layer">
+    <div class="timer-display">
+      <div class="timer-main-text">
+        <span class="time-value" id="timer-val">25</span>
+        <span class="time-unit">min</span>
+      </div>
+      <div class="sub-text" id="timer-status">Focus Session</div>
+    </div>
 
-<script src="script.js"></script>
+    <div class="controls">
+      <button class="btn" data-time="5">5min</button>
+      <button class="btn" data-time="10">10min</button>
+      <button class="btn active" data-time="25">25min</button>
+      <button class="btn" data-time="45">45min</button>
+      <button class="btn" data-time="60">60min</button>
+      <button class="btn" data-time="90">90min</button>
+    </div>
+  </div>
+
+  <script type="module" src="script.js"></script>
 </body>
+
 </html>

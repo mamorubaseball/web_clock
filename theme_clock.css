@@ -1,0 +1,158 @@
+body.theme-clock {
+    background-color: #282c34;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body.theme-clock #canvas-container {
+    /* Used as flex container in this theme */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    position: relative;
+    /* Override absolute */
+}
+
+/* Hide the global UI layer in this theme as it draws its own */
+body.theme-clock #ui-layer {
+    display: none;
+}
+
+/* Clock Specifics */
+body.theme-clock .clock {
+    width: 400px;
+    height: 400px;
+    background-color: #3c3f41;
+    border: 10px solid #61dafb;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 25px rgba(97, 218, 251, 0.5);
+    margin-top: 150px;
+    /* Increased to move clock down */
+}
+
+body.theme-clock .number {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: bold;
+    z-index: 5;
+    top: 50%;
+    left: 50%;
+    margin-top: -20px;
+    margin-left: -20px;
+
+    transform: rotate(var(--rotation)) translate(0, -165px) rotate(calc(0deg - var(--rotation)));
+}
+
+body.theme-clock .clock::after {
+    content: '';
+    position: absolute;
+    background-color: #61dafb;
+    z-index: 11;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+body.theme-clock .hand {
+    --rotation: 0;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom;
+    transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
+    border-radius: 10px;
+    z-index: 10;
+}
+
+body.theme-clock .hour {
+    width: 10px;
+    height: 105px;
+    background-color: #ffffff;
+}
+
+body.theme-clock .minute {
+    width: 8px;
+    height: 140px;
+    background-color: #ffffff;
+}
+
+body.theme-clock .second {
+    width: 6px;
+    height: 140px;
+    background-color: #e06c75;
+}
+
+/* Timer Display inside Clock */
+body.theme-clock .timer-display {
+    position: absolute;
+    top: -100px;
+    /* Raised above the clock */
+    /* Move inside the clock, lower half */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 260px;
+    /* Increased width */
+    height: 80px;
+    /* Increased height */
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Darker bg for readability */
+    border: 2px solid #61dafb;
+    border-radius: 10px;
+    color: #61dafb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4em;
+    /* Increased font size */
+    font-weight: bold;
+    z-index: 30;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    mix-blend-mode: normal;
+    text-shadow: none;
+    margin: 0;
+}
+
+body.theme-clock .timer-controls {
+    margin-top: 40px;
+    display: flex;
+    gap: 15px;
+    z-index: 20;
+}
+
+body.theme-clock .timer-btn {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid #61dafb;
+    background-color: transparent;
+    color: #61dafb;
+    font-size: 1.2em;
+    /* Bigger font for readable min */
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.theme-clock .timer-btn:hover {
+    background-color: #61dafb;
+    color: #282c34;
+    box-shadow: 0 0 15px rgba(97, 218, 251, 0.7);
+}

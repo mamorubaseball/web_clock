@@ -1,0 +1,81 @@
+body.theme-ice {
+    background-color: #0f172a;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body.theme-ice #canvas-container {
+    /* Ice specific background if needed, currently set in JS */
+    background: none;
+}
+
+body.theme-ice .timer-display {
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin-top: -80px;
+    pointer-events: none;
+    mix-blend-mode: normal;
+}
+
+body.theme-ice .timer-main-text {
+    font-family: inherit;
+    color: white;
+}
+
+body.theme-ice .time-value {
+    font-size: 80px;
+    font-weight: 600;
+    letter-spacing: -2px;
+}
+
+body.theme-ice .time-unit {
+    font-size: 30px;
+    font-weight: 400;
+}
+
+body.theme-ice .sub-text {
+    font-size: 18px;
+    opacity: 0.8;
+    margin-top: -10px;
+    font-weight: 300;
+    text-transform: none;
+    color: white;
+    letter-spacing: normal;
+}
+
+/* Controls */
+body.theme-ice .controls {
+    bottom: 50px;
+    gap: 15px;
+}
+
+body.theme-ice .btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    width: auto;
+    height: auto;
+    padding: 10px 20px;
+    color: white;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: normal;
+    box-shadow: none;
+}
+
+body.theme-ice .btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    transform: none;
+    box-shadow: none;
+}
+
+body.theme-ice .btn.active {
+    background: rgba(100, 200, 255, 0.3);
+    border-color: rgba(100, 200, 255, 0.8);
+    box-shadow: 0 0 15px rgba(100, 200, 255, 0.4);
+    color: white;
+    transform: none;
+}
