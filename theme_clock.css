@@ -156,3 +156,55 @@ body.theme-clock .timer-btn:hover {
     color: #282c34;
     box-shadow: 0 0 15px rgba(97, 218, 251, 0.7);
 }
+
+/* Mobile Support */
+@media (max-width: 600px) {
+    body.theme-clock .clock {
+        width: 250px;
+        /* Reduced from 400px */
+        height: 250px;
+        margin-top: calc(50vh - 160px);
+        /* Center vertically */
+        border-width: 6px;
+    }
+
+    body.theme-clock .number {
+        font-size: 1.2rem;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        margin-top: -15px;
+        margin-left: -15px;
+        /* Re-calc translation for smaller radius (approx 125px) */
+        transform: rotate(var(--rotation)) translate(0, -95px) rotate(calc(0deg - var(--rotation)));
+    }
+
+    body.theme-clock .hand.hour {
+        height: 60px;
+    }
+
+    body.theme-clock .hand.minute {
+        height: 90px;
+    }
+
+    body.theme-clock .hand.second {
+        height: 100px;
+    }
+
+    body.theme-clock .timer-display {
+        width: 160px;
+        height: 50px;
+        font-size: 2.5em;
+        top: -60px;
+    }
+
+    body.theme-clock .timer-controls {
+        gap: 10px;
+    }
+
+    body.theme-clock .timer-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 0.9em;
+    }
+}

@@ -111,3 +111,41 @@ body.theme-candle .btn.active {
     color: #ffaa55;
     box-shadow: 0 0 20px rgba(255, 140, 0, 0.3), inset 0 0 10px rgba(255, 140, 0, 0.1);
 }
+
+/* Mobile Support */
+@media (max-width: 600px) {
+    body.theme-candle .time-value {
+        font-size: 60px;
+    }
+
+    body.theme-candle .time-unit {
+        font-size: 20px;
+    }
+
+    body.theme-candle .timer-display {
+        bottom: 110px;
+        margin-bottom: 0px;
+    }
+
+    body.theme-candle .sub-text {
+        margin-top: 5px;
+    }
+
+    body.theme-candle .controls {
+        bottom: 20px;
+        width: 90%;
+        /* Center with margin */
+        flex-wrap: wrap;
+        /* Key change: Wrap buttons */
+        gap: 10px;
+    }
+
+    body.theme-candle .btn {
+        width: 45px;
+        /* Smaller buttons */
+        height: 45px;
+        font-size: 11px;
+        /* Smaller text e.g. '5min' */
+        padding: 0;
+    }
+}
