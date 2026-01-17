@@ -26,24 +26,8 @@
 
   <div id="canvas-container"></div>
 
-  <div id="ui-layer">
-    <div class="timer-display">
-      <div class="timer-main-text">
-        <span class="time-value" id="timer-val">25</span>
-        <span class="time-unit">min</span>
-      </div>
-      <div class="sub-text" id="timer-status">Focus Session</div>
-    </div>
-
-    <div class="controls">
-      <button class="btn" data-time="5">5min</button>
-      <button class="btn" data-time="10">10min</button>
-      <button class="btn active" data-time="25">25min</button>
-      <button class="btn" data-time="45">45min</button>
-      <button class="btn" data-time="60">60min</button>
-      <button class="btn" data-time="90">90min</button>
-    </div>
-  </div>
+  <!-- UI Layer is now dynamically managed by themes -->
+  <div id="ui-layer" style="display: none;"></div>
 
   <script type="module" src="script.js"></script>
 </body>

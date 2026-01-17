@@ -86,22 +86,28 @@ export function mount(container) {
         if (t === 25) btn.classList.add('active');
 
         btn.addEventListener('click', (e) => {
+            console.log('Candle button clicked:', t); // DEBUG
             // Update active state
             const allBtns = controlsDiv.querySelectorAll('.btn');
             allBtns.forEach(b => b.classList.remove('active'));
             e.currentTarget.classList.add('active');
 
-            startTimer(t, (remaining) => {
-                const m = Math.ceil(remaining / 60);
-                timerValueEl.textContent = m;
+            try {
+                startTimer(t, (remaining) => {
+                    const m = Math.ceil(remaining / 60);
+                    timerValueEl.textContent = m;
 
-                const mm = Math.floor(remaining / 60);
-                const ss = remaining % 60;
-                const timeStr = `${String(mm).padStart(2, '0')}:${String(ss).padStart(2, '0')}`;
-                subTextEl.textContent = `${timeStr} remaining`;
-            }, () => {
-                subTextEl.textContent = "Session Complete";
-            });
+                    const mm = Math.floor(remaining / 60);
+                    const ss = remaining % 60;
+                    const timeStr = `${String(mm).padStart(2, '0')}:${String(ss).padStart(2, '0')}`;
+                    // User requested small display like webclock
+                    subTextEl.textContent = timeStr;
+                }, () => {
+                    subTextEl.textContent = "00:00";
+                });
+            } catch (err) {
+                console.error('Error starting candle timer:', err);
+            }
         });
     });
 
