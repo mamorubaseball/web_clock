@@ -1,167 +1,61 @@
-/* 基本スタイル */
+@import url('theme_candle.css');
+@import url('theme_clock.css');
+
 body {
-  background-color: #282c34;
-  min-height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  /* Default base */
+  background-color: #000;
+}
+
+#canvas-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+#ui-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;  /* ← 'center' から 'flex-start' に変更 */
   align-items: center;
-  padding-top: 20vh;           /* ← この行を追加 (画面の上から10%の位置) */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  overflow: hidden;
-}
-
-/* 時計全体のコンテナ */
-.clock {
-  width: 400px;
-  height: 400px;
-  background-color: #3c3f41;
-  border: 10px solid #61dafb;
-  border-radius: 50%;
-  position: relative;
-  box-shadow: 0 0 25px rgba(97, 218, 251, 0.5);
-}
-
-/* 時計の数字のスタイル */
-/*.number {*/
-/*  position: absolute;*/
-/*  width: 30px;*/
-/*  height: 30px;*/
-/*  line-height: 30px; !* 文字を上下中央に *!*/
-/*  text-align: center; !* 文字を左右中央に *!*/
-/*  color: #ffffff;*/
-/*  font-size: 1.5rem;*/
-/*  font-weight: bold;*/
-/*  z-index: 5; !* 針(10)より後ろに表示 *!*/
-
-/*  !* まず、要素の中心を時計の中心に合わせる *!*/
-/*  top: 50%;*/
-/*  left: 50%;*/
-/*  margin-top: -15px; !* 自身の高さ(30px)の半分 *!*/
-/*  margin-left: -15px; !* 自身の幅(30px)の半分 *!*/
-
-/*  !* * CSSの魔法で円形に配置します:*/
-/*   * 1. rotate: まず数字を置きたい角度に「Y軸(上方向)」を回転させます。(HTMLの --rotation を使う)*/
-/*   * 2. translate: 回転させたY軸に沿って中心から外側へ移動します。(半径125px)*/
-/*   * 3. rotate (逆): 数字自体が傾かないように、回転させた分だけ逆回転させて文字をまっすぐに戻します。*/
-/*   *!*/
-/*  transform: rotate(var(--rotation))*/
-/*  translate(0, -125px)*/
-/*  rotate(calc(-1 * var(--rotation)));*/
-/*}*/
-
-.number {
-  position: absolute;
-  width: 40px;        /* ← 変更 (数字の入る箱) */
-  height: 40px;       /* ← 変更 */
-  line-height: 40px;  /* ← 変更 */
-  text-align: center;
-  color: #ffffff;
-  font-size: 2rem;    /* ← 変更 (フォントサイズ) */
-  font-weight: bold;
-  z-index: 5;
-  top: 50%;
-  left: 50%;
-  margin-top: -20px;  /* ← 変更 (width/2) */
-  margin-left: -20px; /* ← 変更 (height/2) */
-
-  transform: rotate(var(--rotation))
-  translate(0, -165px) /* ← 変更 (中心からの距離) */
-  rotate(calc(0deg - var(--rotation)));
-}
-
-/* 時計の中心の点 */
-.clock::after {
-  content: '';
-  position: absolute;
-  background-color: #61dafb;
-  z-index: 11;
-  width: 20px;
-  height: 20px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-}
-
-/* 針の共通スタイル */
-.hand {
-  --rotation: 0;
-  position: absolute;
-  bottom: 50%;
-  left: 50%;
-  transform-origin: bottom;
-  transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
-  border-radius: 10px;
-  z-index: 10;
-}
-
-.hour {
-  width: 10px;
-  height: 105px;
-  background-color: #ffffff;
-}
-
-.minute {
-  width: 8px;
-  height: 140px;
-  background-color: #ffffff;
-}
-
-.second {
-  width: 6px;
-  height: 140px;
-  background-color: #e06c75;
-}
-
-/* タイマー表示エリア */
-.timer-display{
-  /* position */
-  position: absolute;
-  top: -130px;          /* ← 位置を調整 (60px + 20px隙間) */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 300px;        /* ← 横幅を広げる */
-  height: 100px;        /* ← 高さを調整 */
-  /* 形 */
-  background-color: rgba(0, 0, 0, 0.3);
-  border: 2px solid #61dafb;
-  border-radius: 30px; /* ← '50%' から '10px' に変更 (角丸の長方形に) */
-  color: #61dafb;
-  display: flex;
   justify-content: center;
-  align-items: center;
-  font-size: 2.8em;    /* ← フォントサイズを少し大きく */
+  pointer-events: none;
+}
+
+/* Theme Switcher */
+#theme-switch {
+  position: fixed;
+  /* Fixed to ensure it's always on screen */
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  /* Max z-index */
+  pointer-events: auto;
+
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: white;
+  font-family: sans-serif;
+  font-size: 14px;
   font-weight: bold;
-  z-index: 30;
-  opacity: 0; /* 最初は非表示 */
-  transition: opacity 0.3s ease;
-}
-
-/* タイマーボタンのコンテナ */
-.timer-controls {
-  margin-top: 40px;
-  display: flex;
-  gap: 15px;
-}
-
-/* タイマーボタン */
-.timer-btn {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  border: 2px solid #61dafb;
-  background-color: transparent;
-  color: #61dafb;
-  font-size: 1em;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  backdrop-filter: blur(10px);
+  transition: all 0.2s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-.timer-btn:hover {
-  background-color: #61dafb;
-  color: #282c34;
-  box-shadow: 0 0 15px rgba(97, 218, 251, 0.7);
+#theme-switch:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
 }
-
-
